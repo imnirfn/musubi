@@ -1,0 +1,61 @@
+* From here we can insert at the start. Aud now we can start to type here. And add something here too.
+* From here we can insert at the start. Aud now we can start to type here. And add something here too.
+* From here we can insert at the start. Aud now we can start to type here. And add something here too.
+* From here we can insert at the start. Aud now we can start to type here. And add something here too.
+* From here we can insert at the start. Aud now we can start to type here. And add something here too.
+
+r = replace
+V = enter visual block mode (Vi)
+gg = move to the beginning of file
+G = move to end of the file
+0 = move to beginning of line.
+$ = move to end of the line.
+o = insert a new line at the end of the current line and move into insert mode
+p = paste
+y = yank (copy) -- press yy to instant copy current line
+c = change. (similar to delete, but straight go into insert mode)
+a = append next character after.
+A = append to the very end of line.
+i = insert before current character.
+I = insert after character beginning of line.
+v = enter visual mode
+h = move left
+j = move down
+J = paragraph the current line to the above line
+gJ = join lines together without whitespace
+k = move up
+l = move right
+w = jump forward to the start of next words
+W = jump forward to the start of next words ignore special char
+b = jump backward to the start of previous words
+e = move to the end of the words
+f = jump forward to first letter of the next sentence.
+F = jump backward to first letter of the previous sentence.
+; = repeat the latest action.
+. = repeat the recent actions
+d = delete and follow by an actions. (dif, dis, df.... etc) -- dd for delete current line
+	i = inside
+	s = sentence
+	p = paragraph
+{ = move to the end of paragraph
+u = undo.
+<CTRL> + r = redo.
+<CTRL> + a = increments number
+<CTRL> + x = decrements number
+
+========MACROS=========
+press q to record macros
+press @@ or @q to replay macros
+:reg to view registers that stored the macro
+
+99 bottles of beer on the wall, 99 botles of beer. Take one down, 98 bottles on the wall.
+98 bottles of beer on the wall, 98 botles of beer. Take one down, 97 bottles on the wall.
+97 bottles of beer on the wall, 97 botles of beer. Take one down, 96 bottles on the wall.
+96 bottles of beer on the wall, 96 botles of beer. Take one down, 95 bottles on the wall.
+95 bottles of beer on the wall, 95 botles of beer. Take one down, 94 bottles on the wall.
+94 bottles of beer on the wall, 94 botles of beer. Take one down, 93 bottles on the wall.
+93 bottles of beer on the wall, 93 botles of beer. Take one down, 92 bottles on the wall.
+92 bottles of beer on the wall, 92 botles of beer. Take one down, 91 bottles on the wall.
+91 bottles of beer on the wall, 91 botles of beer. Take one down, 90 bottles on the wall.
+90 bottles of beer on the wall, 90 botles of beer. Take one down, 89 bottles on the wall.
+
