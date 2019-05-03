@@ -1,9 +1,3 @@
-" Welcome to Naz's vimrc file
-" ================================
-
-" --------------------------------
-" Plugins
-" --------------------------------
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
