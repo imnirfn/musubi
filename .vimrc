@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+set ttyfast
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -29,6 +30,8 @@ Plugin 'sheerun/vim-polyglot'   " syntax highlighting in most languages
 Plugin 'joshdick/onedark.vim'   " Atom-style dark theme
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'valloric/youcompleteme'
+Plugin 'preservim/nerdtree'
+Plugin 'dense-analysis/ale'
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
@@ -36,6 +39,11 @@ filetype plugin indent on
 " --------------------------------
 " Pretty things
 " --------------------------------
+autocmd VimEnter * NERDTree
+autocmd BufEnter * NERDTreeMirror
+nmap <silent> <C-t> :NERDTreeToggle<CR>
+nmap <silent> <F2> :NERDTreeFind<CR>
+
 syntax on
 colorscheme onedark
 let g:ycm_python_binary_path = 'python3'
@@ -67,9 +75,18 @@ inoremap jj <ESC>:w<CR>
      
 " Pasting - indent last pasted
 nnoremap gz '[='] 
-
+let g:vue_pre_processors = []
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><ESC> :noh<cr>
+let g:ale_fixers = {
+ \ 'javascript': ['eslint'],
+ \ 'vue': ['eslint'],
+ \ 'typescript': ['tslint']
+ \ }
+let g:ale_sign_error = '❌'
+let g:ale_completion_tsserver_autoimport = 1
+let g:ale_sign_warning = '⚠️'
+let g:ale_fix_on_save = 1
 
 "Cursor
 if exists('$TMUX')
@@ -117,7 +134,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
-
+set cc=
 " Disable swap files
 set noswapfile
 
@@ -126,3 +143,5 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+
+
