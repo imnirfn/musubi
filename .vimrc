@@ -1,6 +1,7 @@
 set nocompatible              " be iMproved, required
 set ttyfast
-filetype off                  " required
+filetype plugin on      " required
+syntax on
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -32,6 +33,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'valloric/youcompleteme'
 Plugin 'preservim/nerdtree'
 Plugin 'dense-analysis/ale'
+Plugin 'vimwiki/vimwiki'
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
