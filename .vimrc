@@ -34,6 +34,7 @@ Plugin 'valloric/youcompleteme'
 Plugin 'preservim/nerdtree'
 Plugin 'dense-analysis/ale'
 Plugin 'vimwiki/vimwiki'
+Plugin 'hugolgst/vimsence'
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
@@ -42,7 +43,7 @@ filetype plugin indent on
 " Pretty things
 " --------------------------------
 autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
+" autocmd BufEnter * NERDTreeMirror
 nmap <silent> <C-t> :NERDTreeToggle<CR>
 nmap <silent> <F2> :NERDTreeFind<CR>
 
