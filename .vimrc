@@ -1,7 +1,40 @@
-set nocompatible              " be iMproved, required
+set nocompatible
+set noerrorbells
+set number
+set linebreak
+set showbreak=+++
+set textwidth=100
+set showmatch
+set noswapfile
+set hlsearch
+set smartcase
+set ignorecase
+set incsearch
+set autoindent
+set smartindent
+set smarttab
+set nohlsearch
+set noerrorbells
+set tabstop=2 softtabstop=2 expandtab
+set shiftwidth=2
+set ruler
+set undolevels=1000
+set backspace=indent,eol,start
+set mouse=a
+set nowrap
+
 set ttyfast
+set guicursor=n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20
 filetype plugin on      " required
 syntax on
+
+""""""""""
+highlight Cursor guifg=white guibg=black
+highlight iCursor guifg=white guibg=steelblue
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -32,9 +65,13 @@ Plugin 'joshdick/onedark.vim'   " Atom-style dark theme
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'valloric/youcompleteme'
 Plugin 'preservim/nerdtree'
+Plugin 'dracula/vim'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'xuyuanp/nerdtree-git-plugin'
 Plugin 'dense-analysis/ale'
 Plugin 'vimwiki/vimwiki'
 Plugin 'hugolgst/vimsence'
+Plugin 'yegappan/grep'
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
@@ -48,7 +85,8 @@ nmap <silent> <C-t> :NERDTreeToggle<CR>
 nmap <silent> <F2> :NERDTreeFind<CR>
 
 syntax on
-colorscheme onedark
+set background=dark
+colorscheme hybrid
 let g:ycm_python_binary_path = 'python3'
 " Set Airline bar theme
 let g:airline_theme='bubblegum'
@@ -63,6 +101,7 @@ set colorcolumn=80
 " Basic stuff
 " --------------------------------
 let g:mapleader = " " " Set leader to spacebar 
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|target\|dist\|__pycache__'
 set spelllang=en_gb
 set backspace=indent,eol,start " Bring backspace to life
 set number          " Line numbers
