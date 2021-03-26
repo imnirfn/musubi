@@ -79,7 +79,7 @@ filetype plugin indent on
 " --------------------------------
 " Pretty things
 " --------------------------------
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " autocmd BufEnter * NERDTreeMirror
 nmap <silent> <C-t> :NERDTreeToggle<CR>
 nmap <silent> <F2> :NERDTreeFind<CR>
@@ -87,6 +87,7 @@ nmap <silent> <F2> :NERDTreeFind<CR>
 syntax on
 set background=dark
 colorscheme hybrid
+hi Normal guibg=NONE ctermbg=NONE
 let g:ycm_python_binary_path = 'python3'
 " Set Airline bar theme
 let g:airline_theme='bubblegum'
