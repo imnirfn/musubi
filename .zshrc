@@ -1,15 +1,37 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 # Path to your oh-my-zsh installation.
-ZSH_DISABLE_COMPFIX="true"
-export TERM="xterm-256color"
-export ZSH="/Users/s3ns3/.oh-my-zsh"
+export ZSH="/home/s3ns3/.oh-my-zsh"
+
+
+WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
+
+# enable completion features
+autoload -Uz compinit
+compinit -d ~/.cache/zcompdump
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case insensitive tab completion
+
+
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000000
+SAVEHIST=10000000
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+#setopt share_history         # share command history data
+
+# force zsh to show the complete history
+alias history="history 0"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="jovial"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -45,6 +67,8 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
+# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -68,7 +92,16 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  autojump
+  urltools
+  bgnotify
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  jovial
+  osx
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,15 +130,21 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias sk="ssh -i ~/Documents/projects/.key/kreno-admin.pem ubuntu@13.212.111.102"
-alias skdev="ssh -i ~/.ssh/id_rsa root@dev.skcrm.com.my -p44200"
-alias skprod="ssh -i ~/.ssh/id_rsa root@prod.skcrm.com.my -p44200"
-alias tmn="tmux new -s $1"
-alias tma="tmux attach-session -t $1"
-alias tmd="tmux detach"
-alias ga="git add ."
-alias gcm="git commit -m '$1'"
-alias gpull="git pull origin $1"
-alias gpush="git push origin $1"
-alias kali="docker run -ti --rm --mount src=kali-root,dst=/root --mount src=kali-postgres,dst=/var/lib/postgresql kali"
-export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/s3ns3/.composer/vendor/bin:/Library/Apple/usr/bin"
+
+# enable auto-suggestions based on the history
+if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+    . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    # change suggestion color
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# alias
+alias tcp-scripts='bash /opt/arsenals/scripts/tcp-scripts.sh'
+alias pls='python3 ~/Documents/dev/pls/getnotes.py $1 $2 $3'
+alias b='sudo /etc/init.d/bluetooth start'
+
