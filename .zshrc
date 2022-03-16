@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/s3ns3/.oh-my-zsh"
+
+export ZSH="/home/kazbrekker/.oh-my-zsh"
 
 
 WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
@@ -30,7 +31,7 @@ alias history="history 0"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="jovial"
+ZSH_THEME="passion"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -93,6 +94,8 @@ ZSH_THEME="jovial"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  zsh-history-enquirer
+
   git
   autojump
   urltools
@@ -100,7 +103,7 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   jovial
-  osx
+  macos
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -138,6 +141,17 @@ if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
 fi
 
+# Add this to your PATH if it’s not already declared
+export PATH=$PATH:$HOME/.local/bin
+
+# Powerline configuration
+if [ -f $HOME/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh ]; then
+    $HOME/.local/bin/powerline-daemon -q
+    POWERLINE_BASH_CONTINUATION=1
+    POWERLINE_BASH_SELECT=1
+    source $HOME/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
+fi
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -145,6 +159,10 @@ export NVM_DIR="$HOME/.nvm"
 
 # alias
 alias tcp-scripts='bash /opt/arsenals/scripts/tcp-scripts.sh'
-alias pls='python3 ~/Documents/dev/pls/getnotes.py $1 $2 $3'
-alias b='sudo /etc/init.d/bluetooth start'
+alias kali='sudo docker container start kali && sudo docker attach kali'
+alias work='cd ~/Documents/work/ && tmux new -s work'
 
+# Golang vars
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
