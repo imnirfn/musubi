@@ -48,23 +48,17 @@ Plug 'luochen1990/rainbow'
 Plug 'glepnir/galaxyline.nvim'
 Plug 'Avimitin/nerd-galaxyline'
 Plug 'ryanoasis/vim-devicons' " vimscript
-
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-line'
-Plug 'kana/vim-textobj-entire'
-Plug 'szw/vim-g'
-Plug 'jiangmiao/auto-pairs'
-Plug 'fatih/vim-go' " golang development 
-Plug 'jamesroutley/vim-logbook'
-Plug 'sheerun/vim-polyglot'   " syntax highlighting in most languages
-Plug 'scrooloose/nerdcommenter'
-Plug 'valloric/youcompleteme'
+Plug 'vimwiki/vimwiki'
 Plug 'preservim/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
-Plug 'dense-analysis/ale'
-Plug 'vimwiki/vimwiki'
-Plug 'hugolgst/vimsence'
-Plug 'yegappan/grep'
+Plug 'sheerun/vim-polyglot'   " syntax highlighting in most languages
+Plug 'szw/vim-g' " googling straight from vim
+Plug 'jiangmiao/auto-pairs'
+Plug 'jamesroutley/vim-logbook'
+Plug 'scrooloose/nerdcommenter'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Plug 'dense-analysis/ale'
 call plug#end()
 
 filetype plugin indent on
@@ -84,7 +78,7 @@ let g:deus_termcolors=256
 
 
 hi Normal guibg=NONE ctermbg=NONE
-let g:ycm_python_binary_path = 'python3'
+" let g:ycm_python_binary_path = 'python3'
 
 "rainbow Plugin Options (luochen1990/rainbow)
 let g:rainbow_active = 1    " 0 if you want to enable it later via :RainbowToggle
