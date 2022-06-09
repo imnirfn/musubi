@@ -31,7 +31,7 @@ alias history="history 0"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="passion"
+ZSH_THEME="jovial"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -94,16 +94,14 @@ ZSH_THEME="passion"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  zsh-history-enquirer
-
   git
   autojump
   urltools
   bgnotify
   zsh-autosuggestions
   zsh-syntax-highlighting
+  #zsh-history-enquirer
   jovial
-  macos
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -158,11 +156,5 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # alias
-alias tcp-scripts='bash /opt/arsenals/scripts/tcp-scripts.sh'
-alias kali='sudo docker container start kali && sudo docker attach kali'
 alias work='cd ~/Documents/work/ && tmux new -s work'
 
-# Golang vars
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH

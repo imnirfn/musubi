@@ -25,8 +25,6 @@ window:
     columns: 200
     lines: 50
 
-# Make background slightly transparent
-background_opacity: 0.985
 
 cursor:
   # Block Underline or Beam
