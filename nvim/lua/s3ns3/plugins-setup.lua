@@ -29,6 +29,7 @@ end
 
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim' -- the packer
+  use 'nvim-lua/plenary.nvim'
 
   -- plugins here
   use 'christoomey/vim-tmux-navigator'
@@ -37,8 +38,15 @@ return packer.startup(function(use)
   use 'numToStr/Comment.nvim'
   use 'nvim-tree/nvim-tree.lua'
 
+  use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
+  use({ 'nvim-telescope/telescope.nvim', branch = '0.1.x' })
+
+  -- all the beauty things
   -- colorscheme
   use 'bluz71/vim-nightfly-guicolors'
+  use 'nvim-lualine/lualine.nvim'
+  -- icons
+  use 'kyazdani42/nvim-web-devicons'
 
   if packer_bootstrap then
     require("packer").sync()
