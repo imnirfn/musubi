@@ -12,13 +12,9 @@ bind-key l select-pane -R
 bind-key k select-pane -U
 bind-key j select-pane -D
 
-#Use prefix+HJKL to switch windows 
-bind-key H previous-window
-bind-key L next-window
-
 #Set windows split keys
-bind-key v split-window -h
-bind-key h split-window -v
+bind-key V split-window -h
+bind-key H split-window -v
 
 # Resize pane with alt-direction
 bind -n C-h resize-pane -L
@@ -34,9 +30,6 @@ bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection c
 #Easy config reload
 bind-key r source-file ~/.tmux.conf \; display-message "tmux.conf reloaded."
 
-######################
-### DESIGN CHANGES ###
-######################
 
 # loud or quiet?
 set -g visual-activity off
@@ -49,25 +42,16 @@ set -g bell-action none
 setw -g clock-mode-colour colour5
 setw -g mode-style 'fg=colour1 bg=colour18 bold'
 
-# panes
-set -g pane-border-style 'fg=colour19 bg=colour0'
-set -g pane-active-border-style 'bg=colour0 fg=colour9'
+# pane number display
+set-option -g display-panes-active-colour colour33 #blue
+set-option -g display-panes-colour colour166 #orange
 
-# statusbar
-set -g status-position bottom
-set -g status-justify left
-set -g status-style 'bg=black fg=white'
-set -g status-left " #S "
-set -g status-right '#[fg=white,bg=black] %d/%m #[fg=white,bg=black] %H:%M:%S '
-set -g status-right-length 50
-set -g status-left-length 20
+# clock
+set-window-option -g clock-mode-colour colour64 #green
 
-setw -g window-status-current-style 'fg=green bg=black bold'
-setw -g window-status-current-format ' #I#[fg=colour249]:#[fg=colour255]#W#[fg=colour249]#F '
-
-setw -g window-status-style 'fg=white bg=black'
-setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '
-
+# allow the title bar to adapt to whatever host you connect to
+set -g set-titles on
+set -g set-titles-string "#T"
 setw -g window-status-bell-style 'fg=colour255 bg=colour1 bold'
 
 # messages
@@ -75,3 +59,24 @@ set -g message-style 'fg=white bg=black bold'
 
 # neovim
 set-option -sg escape-time 10
+
+set -g mouse on
+
+# git clone first: https://github.com/tmux-plugins/tpm
+set -g @plugin 'tmux-plugins/tpm'
+
+# list of plugins
+set -g @plugin 'christoomey/vim-tmux-navigator'
+set -g @plugin 'jimeh/tmux-themepack'
+set -g @plugin 'tmux-plugins/tmux-resurrect' # persist tmux sessions
+set -g @plugin 'tmux-plugins/tmux-continuum' # save session every 15mins
+
+# set themepack to use
+set -g @themepack 'powerline/default/cyan'
+
+set -g @resurrect-capture-pane-contents 'on'
+set -g @continuum-restore 'on'
+
+# init manager
+run '~/.tmux/plugins/tpm/tpm'
+
